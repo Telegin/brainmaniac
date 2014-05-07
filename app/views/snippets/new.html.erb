@@ -1,0 +1,102 @@
+<%- model_class = Snippet -%>
+<div class="page-header handWritten">
+
+
+
+  <script src="countdown.js"></script>
+
+  Remember you have only 5 minutes to write 3 ideas
+
+  <br><br>
+  <script>
+
+
+
+      function doneHandler(result) {
+
+      	// Result is a javascript Date object, containing the deadline time.
+      	//
+      	// 		NOTES on the javascript Date object:
+      	// 			- months are 0-11, not 1-12
+      	// 			- "day" is day of the week (0-6) representing sunday-saturday
+      	// 			- "date" is the day of the month (0-31)
+
+
+        var btn = document.getElementById('btn')
+        if ( btn == null) alert("not found")
+        else {
+            btn.click();
+        }
+      }
+
+      var myCountdownTest = new Countdown({
+									time: 300,
+									width:150,
+									height:80,
+
+									rangeHi:"minute",	// <- no comma on last item!
+          onComplete : doneHandler
+
+									});
+
+</script>
+
+
+  <br>
+
+  <h1 class="snippet"><%= @story.title %></h1>
+</div>
+
+<div class="handWritten">
+<pre class="handWritten">
+
+  <%= render @story.snippets.order("created_at ASC") %>
+</pre>
+</div>
+
+<div class="handWritten">
+  <%= render :partial => 'form' %>
+</div>
+
+
+<hr/>
+
+<h4>The following bar helps you to situate your snippet in the brainstorm</h4>
+<progress value="<%= @story.snippets.count %>" max="<%= @story.size %>"></progress>
+
+<h2>
+  <% if @story.snippets.count == @story.size - 1 %>
+      You have to finish this storm!
+  <% end %>
+</h2>
+
+
+ 
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

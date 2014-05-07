@@ -1,0 +1,9 @@
+<h2>
+
+
+<% if Story.where(status: 'editable').count > 0 %>
+ <%= link_to 'Participate in Brainstorm', new_story_snippet_path(Story.where(status: 'editable').offset(rand(Story.where(status: 'editable').count)).first.id) %>
+<% else %> 
+ Create a Brainstorm
+<% end %>
+</h2>

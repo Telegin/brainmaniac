@@ -1,0 +1,42 @@
+<%- model_class = Story -%>
+<div class="page-header">
+  <h1>BrainStorms</h1>
+</div>
+
+
+<% if session[:registered_user] == "admin" %>
+<div class="handWritten">  
+<ul>	
+  <% @stories.each do |story| %>
+		<li>
+		 <%= link_to story.title, story_path(story) %> | <%= story.status %>
+
+<%if story.status == 'locked'%>
+		 <%= link_to "Unlock it!", setStatusAsEditable_path(story), :class => 'btn btn-success' %>		 
+<%end%>		 
+		 
+		 <%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+		</li>
+  <% end %>	
+</ul>
+</div>
+<% else %>
+
+<div class="handWritten">  
+<ul>	
+  <% @stories.where(status: 'finished').each do |story| %>
+		<li><%= link_to story.title, story_path(story) %></li>
+  <% end %>	
+</ul>
+</div>
+
+
+<%end %>
+
+
+
+
+
+			
+			
+			
