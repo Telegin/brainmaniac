@@ -25,23 +25,6 @@
 </div>
 
 
-<div id="randomStoryContainer">
-<%= image_tag "background.png", :id => "image" %>
-<div id="randomStory" class="handWritten">
-
-<% if !@randomStory.nil? %>
- <% @randomStory.each do |s| %>
-  <pre class="handWritten"><%= s.content %></pre>
- <% end %>
-
-<%else%>
-<pre class="handWritten">no story</pre>
-<%end%>
-
-
-</div>
-</div>
-
 
 
 
